@@ -1,0 +1,29 @@
+226. INVERT BINARY TREE
+
+class Solution {
+public:
+    void swap(TreeNode* root){
+        TreeNode* temp = root->right;
+        root->right = root->left;
+        root->left = temp;
+    }
+
+
+    TreeNode* invertTree(TreeNode* root) {
+       
+        // base case
+        if(root == NULL) return root;
+
+
+        // swap
+        swap(root);
+
+
+        // traversal
+        invertTree(root->left);
+        invertTree(root->right);
+
+
+        return root;
+    }
+};
